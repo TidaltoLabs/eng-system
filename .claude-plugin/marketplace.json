@@ -5,15 +5,13 @@
     "url": "https://github.com/TidaltoLabs"
   },
   "metadata": {
-    "description": "工程文档体系技能组：总入口路由、骨架引导、调研协议、决策记录、架构规格、里程碑规划与验收、一致性审查。",
-    "version": "0.2.0"
+    "description": "工程文档体系技能组：总入口路由、骨架引导、调研协议、决策记录、架构规格、里程碑规划与验收、一致性审查。"
   },
   "plugins": [
     {
       "name": "eng-system",
       "source": "./plugins/claude",
       "description": "七个工程文档体系技能：eng-system / eng-bootstrap / eng-research / eng-decision / eng-architecture / eng-milestone / eng-audit。",
-      "version": "0.2.0",
       "author": {
         "name": "TidaltoLabs"
       },
