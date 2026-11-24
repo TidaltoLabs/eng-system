@@ -10,7 +10,7 @@ related:
 
 # eng-system
 
-一套可跨项目复用的**工程文档体系**技能组：把「骨架 / 里程碑 / 调研 / 决策 / 审查」五件事固化下来。
+一套可跨项目复用的**工程文档体系**技能组：把「骨架 / 调研 / 决策 / 架构 / 里程碑 / 审查」六件事固化下来，外加一个负责路由与收尾的总入口。
 
 > 它不是项目管理模板，而是**流程约束**——解决的是"文档写了但没人守"的问题。
 
@@ -32,13 +32,32 @@ related:
 
 | 技能 | 解决什么 | 核心产物 |
 |---|---|---|
-| `eng-bootstrap` | 项目起步时一次性钉死能力边界、版本节奏、验收门禁 | 五个顶层文件 + docs 四目录 |
-| `eng-milestone` | 里程碑怎么切、什么算能开工、什么算通过 | 九段结构 + 覆盖率门禁 |
-| `eng-research` | 调研怎么写才算合格（而非资料汇编） | 四档标注 + 五类谬误检查 |
-| `eng-decision` | 决策怎么记、何时该独立成文、推翻后怎么留痕 | 六段结构 + superseded 机制 |
-| `eng-audit` | 文档变多后的一致性校对 | 机械五项 + 逻辑四项 + 分级 |
+| `eng-system` | **总入口**：接手导览、阶段判断、轻量分档、执行闭环、发版、交接 | 路由（不产出文档） |
+| `eng-bootstrap` | 建骨架（三种入口：冷启动 / 调研先行 / 补建迁移） | 五个顶层文件 + docs 五目录 |
+| `eng-research` | 调研怎么写才算合格（而非资料汇编） | 四档标注 + 五类谬误 + **推翻回写清单** |
+| `eng-decision` | 决策怎么记、何时独立成文、推翻后怎么留痕 | 六段结构 + superseded 机制 |
+| `eng-architecture` | 把结论固化成可被引用的约束与接口 | 约束表（客观/工程）+ 校准节 |
+| `eng-milestone` | 里程碑怎么切、什么算能开工、什么算通过 | 九段结构 + **阶段分档门禁** |
+| `eng-audit` | 文档变多后的一致性校对 | 机械五项 + 逻辑四项 + **审查/修复两阶段** |
 
-**推荐使用顺序**：`bootstrap` → `milestone` →（每个里程碑前）`research` →（做取舍时）`decision` →（开工前/冻结前）`audit`。
+### 两条合法路径（不是一条）
+
+| 路径 | 适用 | 顺序 |
+|---|---|---|
+| **骨架先行** | 范围清楚、技术栈确定 | `bootstrap` → `milestone` → `research` → `audit` |
+| **调研先行** | 范围不确定 / 可行性未知 | 最小目录 → `research` ×N → `decision` → `architecture` → `bootstrap`（定稿）→ `milestone` |
+
+判据：**答不上「明确不做什么」和「技术栈约束」时，走调研先行。**
+
+### 轻量分档（不要对小事用重流程）
+
+| 规模 | 必做 | 可跳过 |
+|---|---|---|
+| 一次性脚本 / 单文件 | `decision` 记一行 + 调研带标注 | 骨架、里程碑、audit |
+| 小工具（≤3 里程碑） | 简化骨架 + 里程碑九段（数据模型/故障注入可标 N/A） | audit 冻结、架构规格 |
+| 完整体系（≥4 里程碑 / 长期维护） | 全部 7 个技能 | — |
+
+**每个技能都可以单独触发。** 只用 `eng-research` 也成立——产物就是一份带四档标注的 md，不需要建五个 docs 子目录。
 
 ---
 
@@ -52,12 +71,14 @@ eng-system/
 ├── LICENSE              # MIT
 ├── VERSION              # 版本号单一来源
 ├── skills/              # 唯一手写内容源（Agent Skills 格式）
+│   ├── eng-system/SKILL.md        # 总入口：路由 / 接手 / 执行 / 发版 / 交接
 │   ├── eng-bootstrap/SKILL.md
-│   ├── eng-milestone/SKILL.md
 │   ├── eng-research/SKILL.md
 │   ├── eng-decision/SKILL.md
+│   ├── eng-architecture/SKILL.md
+│   ├── eng-milestone/SKILL.md
 │   └── eng-audit/SKILL.md
-├── templates/           # 被技能引用的脚手架模板
+├── templates/           # 10 份脚手架模板（含 architecture / review / gitignore）
 ├── adapters/            # 各平台清单（只放清单，不放内容）
 │   ├── agent-plugins/plugin.json
 │   ├── claude/.claude-plugin/plugin.json
@@ -71,8 +92,6 @@ eng-system/
 ├── .claude-plugin/marketplace.json    # Claude 市场清单
 ├── .agents/plugins/marketplace.json   # Codex 市场清单
 └── scripts/build.sh     # 生成 plugins/ + 自检
-```
-
 ```
 
 **设计原则：内容只有一份（`skills/` + `templates/`），适配层只放清单。**
@@ -125,6 +144,9 @@ cp -R templates/* ~/.agents/templates/
 | 五个技能而非一个大技能 | 触发场景差异大；合并会导致 description 模糊、自动触发失准 |
 | 不绑定具体语言/框架 | 这套约束与语言无关，绑定会限制复用 |
 | 不含具体项目的结论文档 | 那是项目专属资产，不属于体系 |
+| 覆盖率只在 AGENTS 写数字 | 数字分散多处必然漂移；其余文档一律写「以 AGENTS 为准」 |
+| 审查与修复分两个阶段 | 边审边改会引入新矛盾，且无法区分原问题与新问题 |
+| 一套内容、多份清单 | 技能层是通用标准，市场清单层各家方言，无法合并 |
 
 ---
 

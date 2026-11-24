@@ -98,6 +98,9 @@ z — 里程碑内小迭代：每次增量交付递增。
 | 全局集成测试 | ≥ **75%** |
 | 核心纯函数 | **100%** 分支 |
 
+> **本表是覆盖率的唯一权威**，其他文档一律写「以 AGENTS 为准」，不得复述数字。
+> **条件启用**：仅在进入编码阶段后生效；文档阶段一律标 `N/A`，不写「待达标」。
+
 「达不到必须有记录」：写明原因与补偿措施（如手工回归清单），并由用户确认。
 
 ### 测试分层
@@ -154,7 +157,7 @@ tests/
 ```yaml
 ---
 title: <标题>
-type: <research-report|design-spec|milestone|decision|index|roadmap|changelog|agents-guide|project-readme>
+type: <research-report|design-spec|milestone|decision|review-record|index|roadmap|changelog|agents-guide|project-readme>
 status: <draft|draft-vN|active|accepted|completed|superseded>
 updated: YYYY-MM-DD
 related:
@@ -174,6 +177,8 @@ related:
 | `[推断]` | 基于原文结构的工程判断 |
 | `[待确认]` | 官方未覆盖，需实测 |
 | `[未找到]` | 查过但无此内容（≠ 不存在） |
+
+> 本表为速览；**完整协议（含五类谬误与推翻回写清单）以 `eng-research` 技能为准**。
 
 **禁止**：把推断写成结论、编造接口名/字段名、把过期文档当现状。
 

@@ -1,6 +1,6 @@
 {
   "name": "eng-system",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "工程文档体系技能组：骨架引导、里程碑规划、调研协议、决策记录、一致性审查。适用于任何需要长期维护文档的项目。",
   "author": { "name": "TidaltoLabs" },
   "license": "MIT"

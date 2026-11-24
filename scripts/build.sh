@@ -56,8 +56,8 @@ check() {
   done
 
   echo "== 模板 =="
-  for t in AGENTS ROADMAP CHANGELOG README milestone research decision; do
-    [[ -f "$ROOT/templates/$t.md.tpl" ]] || { red "  缺少 templates/$t.md.tpl"; fail=1; }
+  for t in AGENTS.md.tpl ROADMAP.md.tpl CHANGELOG.md.tpl README.md.tpl milestone.md.tpl research.md.tpl decision.md.tpl architecture.md.tpl review.md.tpl gitignore.tpl; do
+    [[ -f "$ROOT/templates/$t" ]] || { red "  缺少 templates/$t"; fail=1; }
   done
 
   echo "== 占位符残留 =="
@@ -130,6 +130,28 @@ sys.exit(1 if bad else 0)
 PYEOF
   [[ $? -eq 0 ]] || fail=1
 
+  echo "== 构建产物标识 =="
+  if [[ -d "$ROOT/plugins" ]]; then
+    local missing=0
+    for d in "$ROOT"/plugins/*/; do
+      if ! head -1 "$d/README.md" 2>/dev/null | grep -q '本目录是构建产物'; then
+        # 旧产物：build 会重写，属提示而非错误
+        yellow "  待补齐横幅（下次 build 自动修复）：${d#$ROOT/}"; missing=1
+      fi
+    done
+    [[ $missing -eq 0 ]] && green "  全部带横幅"
+  else
+    yellow "  plugins/ 尚未生成（首次运行 build 时创建）"
+  fi
+
+  echo "== 陈旧产物 =="
+  if [[ -d "$ROOT/dist" ]]; then
+    red "  dist/ 已废弃（市场清单指向 plugins/），请删除"
+    fail=1
+  else
+    green "  无 dist/ 残留"
+  fi
+
   echo "== 技能目录不得嵌套 =="
   if find "$ROOT/skills" -mindepth 3 -name 'SKILL.md' | grep -q .; then
     red "  发现嵌套 SKILL.md（DSH 与 Agent Plugins 均不递归）"; fail=1
@@ -147,7 +169,13 @@ stage() {
   mkdir -p "$dest"
   cp -R "$ROOT/skills"    "$dest/skills"
   cp -R "$ROOT/templates" "$dest/templates"
-  cp    "$ROOT/README.md" "$dest/README.md"
+  # 产物 README 顶部加横幅，防止有人直接改构建产物
+  {
+    echo "> ⚠️ **本目录是构建产物**（由 \`scripts/build.sh\` 从 \`skills/\` + \`templates/\` 生成）。"
+    echo "> 请勿直接修改；改动请改源文件后重新构建。"
+    echo
+    cat "$ROOT/README.md"
+  } > "$dest/README.md"
   cp    "$ROOT/LICENSE"   "$dest/LICENSE"
 }
 
