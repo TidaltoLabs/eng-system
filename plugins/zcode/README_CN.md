@@ -76,7 +76,7 @@
 | **Codex CLI** | `.agents/plugins/marketplace.json` | `codex plugin marketplace add TidaltoLabs/eng-system` → `codex plugin add eng-system@eng-system` |
 | **ZCode** | 根 `marketplace.json`（同时兼容 `.claude-plugin/marketplace.json`） | 插件市场 → 添加 → 添加插件市场 → 填 `TidaltoLabs/eng-system`（**仅 UI 入口，无 CLI**） |
 | **Cursor / Copilot** | 同 Codex（Agent Plugins 1.0） | 插件面板添加本仓库 |
-| **DSH** | 无官方市场 | 零安装：`cp -R plugins/dsh/skills/* ~/.agents/skills/`；社区市场见 [adapters/dsh/README.md](adapters/dsh/README.md) |
+| **DSH** | 社区市场（awesome-dsh-plugin） | bundle 安装：`dsh plugin --profile web add <仓库路径>/plugins/dsh`；或零安装 `cp -R plugins/dsh/skills/* ~/.agents/skills/`（详见 [adapters/dsh/README.md](adapters/dsh/README.md)） |
 
 > 三条清单各自指向对应宿主目录：Claude → `plugins/claude/`，Codex/Cursor/Copilot → `plugins/agent-plugins/`，ZCode → `plugins/zcode/`。
 
@@ -117,16 +117,18 @@ eng-system/
 │   ├── eng-milestone/SKILL.md
 │   └── eng-audit/SKILL.md
 ├── templates/           # 10 份脚手架模板（含 architecture / review / gitignore）
-├── adapters/            # 各平台清单（只放清单，不放内容）
+├── adapters/            # 各平台清单与适配（只放清单与适配层，不放内容）
 │   ├── agent-plugins/plugin.json
 │   ├── claude/.claude-plugin/plugin.json
 │   ├── zcode/.zcode-plugin/plugin.json
-│   └── dsh/README.md
+│   └── dsh/             # DSH 适配：bundle 薄壳源 + 安装说明
+│       ├── bundle/      # package.json + cordis.patch.yml + index.js（provider）
+│       └── README.md
 ├── plugins/             # 构建产物（入库，供市场清单指向）
 │   ├── agent-plugins/   # Codex / Cursor / Copilot
 │   ├── claude/
 │   ├── zcode/
-│   └── dsh/             # 零安装载荷
+│   └── dsh/             # 可安装 DSH bundle（eng-system-dsh）+ 零安装载荷
 ├── .claude-plugin/marketplace.json    # Claude 市场清单
 ├── .agents/plugins/marketplace.json   # Codex 市场清单
 └── scripts/build.sh     # 生成 plugins/ + 自检

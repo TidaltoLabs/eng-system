@@ -109,6 +109,19 @@ sys.exit(1 if bad else 0)
 I18NEOF
   [[ $? -eq 0 ]] || fail=1
 
+  echo "== DSH bundle =="
+  for f in adapters/dsh/bundle/package.json adapters/dsh/bundle/cordis.patch.yml adapters/dsh/bundle/index.js; do
+    [[ -f "$ROOT/$f" ]] || { red "  缺少 $f"; fail=1; }
+  done
+  if [[ -f "$ROOT/adapters/dsh/bundle/package.json" ]]; then
+    bver="$(python3 -I -c "import json;print(json.load(open('$ROOT/adapters/dsh/bundle/package.json'))['version'])")"
+    if [[ "$bver" != "$VERSION" ]]; then
+      red "  bundle version=$bver != VERSION=$VERSION（源文件必须与 VERSION 同步）"; fail=1
+    else
+      green "  bundle 版本与 VERSION 一致"
+    fi
+  fi
+
   echo "== 清单一致性 =="
   # 所有清单里的 name 必须一致；version 策略：Claude 适配器不得含 version（钉死会阻断
   # commit SHA 更新追踪），其余插件清单的 version 必须等于 VERSION
@@ -250,11 +263,16 @@ build() {
   inject_version "$d/.zcode-plugin/plugin.json"
   green "  plugins/zcode/"
 
-  # DSH：零安装载荷（技能目录 + 安装说明）。DSH 插件需 TS provider，v0.1 不提供假实现。
+  # DSH：可安装 bundle（技能 + templates + provider 薄壳）+ 零安装说明
   d="$OUT/dsh"
   stage "$d"
   cp "$ROOT/adapters/dsh/README.md" "$d/DSH-INSTALL.md"
-  green "  plugins/dsh/（零安装载荷）"
+  # bundle 三件套：package.json / cordis.patch.yml / index.js（源在 adapters/dsh/bundle/）
+  cp "$ROOT/adapters/dsh/bundle/package.json"     "$d/package.json"
+  cp "$ROOT/adapters/dsh/bundle/cordis.patch.yml" "$d/cordis.patch.yml"
+  cp "$ROOT/adapters/dsh/bundle/index.js"         "$d/index.js"
+  inject_version "$d/package.json"
+  green "  plugins/dsh/（bundle + 零安装载荷）"
 
   echo
   echo "产物："

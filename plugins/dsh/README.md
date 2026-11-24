@@ -76,7 +76,7 @@ This repository is both a **plugin marketplace** and the **plugin content**. Too
 | **Codex CLI** | `.agents/plugins/marketplace.json` | `codex plugin marketplace add TidaltoLabs/eng-system` → `codex plugin add eng-system@eng-system` |
 | **ZCode** | root `marketplace.json` (also compatible with `.claude-plugin/marketplace.json`) | Plugin Marketplace → Add → Add plugin marketplace → enter `TidaltoLabs/eng-system` (**UI only, no CLI**) |
 | **Cursor / Copilot** | same as Codex (Agent Plugins 1.0) | add this repo in the plugin panel |
-| **DSH** | no official marketplace | zero-install: `cp -R plugins/dsh/skills/* ~/.agents/skills/`; community marketplaces in [adapters/dsh/README.md](adapters/dsh/README.md) |
+| **DSH** | community marketplaces (awesome-dsh-plugin) | bundle install: `dsh plugin --profile web add <repo>/plugins/dsh`; or zero-install `cp -R plugins/dsh/skills/* ~/.agents/skills/` (see [adapters/dsh/README.md](adapters/dsh/README.md)) |
 
 > Each manifest points at its host directory: Claude → `plugins/claude/`, Codex/Cursor/Copilot → `plugins/agent-plugins/`, ZCode → `plugins/zcode/`.
 
@@ -117,16 +117,18 @@ eng-system/
 │   ├── eng-milestone/SKILL.md
 │   └── eng-audit/SKILL.md
 ├── templates/           # 10 scaffold templates (incl. architecture / review / gitignore)
-├── adapters/            # per-platform manifests only (no content)
+├── adapters/            # per-platform manifests & adaptation only (no content)
 │   ├── agent-plugins/plugin.json
 │   ├── claude/.claude-plugin/plugin.json
 │   ├── zcode/.zcode-plugin/plugin.json
-│   └── dsh/README.md
+│   └── dsh/             # DSH adaptation: bundle shell sources + install guide
+│       ├── bundle/      # package.json + cordis.patch.yml + index.js (the provider)
+│       └── README.md
 ├── plugins/             # build artifacts (committed; marketplace manifests point here)
 │   ├── agent-plugins/   # Codex / Cursor / Copilot
 │   ├── claude/
 │   ├── zcode/
-│   └── dsh/             # zero-install payload
+│   └── dsh/             # installable DSH bundle (eng-system-dsh) + zero-install payload
 ├── .claude-plugin/marketplace.json    # Claude marketplace manifest
 ├── .agents/plugins/marketplace.json   # Codex marketplace manifest
 └── scripts/build.sh     # generates plugins/ + self-checks

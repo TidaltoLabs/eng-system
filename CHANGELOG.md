@@ -13,6 +13,17 @@ updated: 2026-11-24
 
 ## [Unreleased]
 
+### 新增
+
+- **DSH bundle（`eng-system-dsh`）**：`plugins/dsh/` 从「仅零安装载荷」升级为可安装的 Cordis 插件包。provider 薄壳（`adapters/dsh/bundle/index.js`）运行时扫描包内 `skills/*/SKILL.md` 的 frontmatter，注册为 bundled skill provider（`ctx.skills.registerProvider`，rank = `BUNDLED_SKILL_RANK`）；代码不硬编码技能清单，内容仍只有一份。bundle 自带 `templates/`，`../../templates/` 相对引用在包内解析，安装后模板零拷贝
+- `scripts/build.sh`：`plugins/dsh/` 构建追加 bundle 三件套（package.json / cordis.patch.yml / index.js）拷贝与版本注入；自检新增 DSH bundle 门禁（三件套齐备、源版本与 VERSION 一致）
+
+### 变更
+
+- DSH 安装从单一零安装路径变为双路径：bundle 安装（`dsh plugin --profile web add <plugins/dsh>`）或零安装（维持原样）
+- `adapters/dsh/README.md` 重写：bundle 安装与验证命令、零安装路径、provider 维护边界（DSH 破坏性变更只需改一个文件）
+- 实测记录（本机 0.2.1-rc.5）：profile 安装成功、`--dump-config` 确认补丁生效、headless 启动无插件错误、provider `list/get` 沙箱单测通过（7 技能元数据与正文完整）
+
 ## [0.2.0] - 2026-11-24
 
 ### 新增
