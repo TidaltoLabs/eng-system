@@ -75,7 +75,7 @@ check() {
   fi
 
   echo "== 市场清单 =="
-  for f in "$ROOT/.claude-plugin/marketplace.json" "$ROOT/.agents/plugins/marketplace.json"; do
+  for f in "$ROOT/.claude-plugin/marketplace.json" "$ROOT/.agents/plugins/marketplace.json" "$ROOT/marketplace.json"; do
     if [[ -f "$f" ]]; then
       if python3 -I -c "import json;json.load(open('$f'))" 2>/dev/null; then
         green "  JSON 合法：${f#$ROOT/}"
@@ -86,6 +86,49 @@ check() {
       yellow "  缺少：${f#$ROOT/}"
     fi
   done
+
+  echo "== 清单一致性 =="
+  # 所有清单里的 name 必须一致；version 必须等于 VERSION
+  python3 -I - "$ROOT" "$VERSION" <<'PYEOF'
+import json, sys, pathlib
+root = pathlib.Path(sys.argv[1]); ver = sys.argv[2]
+files = [
+    root/"adapters/agent-plugins/plugin.json",
+    root/"adapters/claude/.claude-plugin/plugin.json",
+    root/"adapters/zcode/.zcode-plugin/plugin.json",
+    root/".claude-plugin/marketplace.json",
+    root/".agents/plugins/marketplace.json",
+    root/"marketplace.json",
+]
+names = set(); bad = False
+for f in files:
+    if not f.exists():
+        print(f"  [warn] 缺少 {f.relative_to(root)}"); continue
+    d = json.loads(f.read_text())
+    n = d.get("name")
+    if n: names.add(n)
+    # 插件清单的 version 必须与 VERSION 一致
+    if f.name == "plugin.json" and d.get("version") != ver:
+        print(f"  [fail] {f.relative_to(root)} version={d.get('version')} != {ver}"); bad = True
+    # 市场条目必须指向存在的目录，且版本一致
+    for pl in d.get("plugins", []) or []:
+        src = pl.get("source")
+        path = None
+        if isinstance(src, str): path = src
+        elif isinstance(src, dict): path = src.get("path")
+        if path:
+            tgt = (root/path).resolve()
+            if not tgt.exists():
+                print(f"  [fail] {f.relative_to(root)} -> {path} 不存在"); bad = True
+        if pl.get("version") and pl["version"] != ver:
+            print(f"  [fail] {f.relative_to(root)} 条目 version={pl['version']} != {ver}"); bad = True
+if len(names) != 1:
+    print(f"  [fail] 清单 name 不一致: {names}"); bad = True
+if not bad:
+    print(f"  name={names.pop()} version={ver} 一致，所有 source 路径存在")
+sys.exit(1 if bad else 0)
+PYEOF
+  [[ $? -eq 0 ]] || fail=1
 
   echo "== 技能目录不得嵌套 =="
   if find "$ROOT/skills" -mindepth 3 -name 'SKILL.md' | grep -q .; then

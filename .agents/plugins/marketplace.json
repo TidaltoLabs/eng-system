@@ -1,21 +1,25 @@
 {
   "name": "eng-system",
-  "owner": {
-    "name": "TidaltoLabs"
+  "interface": {
+    "displayName": "Engineering System"
   },
   "plugins": [
     {
       "name": "eng-system",
       "source": {
+        "source": "local",
         "path": "./plugins/agent-plugins"
       },
-      "description": "五个工程文档体系技能（骨架 / 里程碑 / 调研 / 决策 / 审查）。",
-      "version": "0.1.0",
-      "category": "Productivity",
       "policy": {
-        "installation": "available",
-        "authentication": "none"
-      }
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools",
+      "interface": {
+        "displayName": "Engineering System"
+      },
+      "description": "五个工程文档体系技能（骨架 / 里程碑 / 调研 / 决策 / 审查）。",
+      "version": "0.1.0"
     }
   ]
 }

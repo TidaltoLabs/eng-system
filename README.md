@@ -85,11 +85,13 @@ eng-system/
 
 | 工具 | 市场清单 | 安装方式 |
 |---|---|---|
-| **Claude Code** | `.claude-plugin/marketplace.json` | `/plugin marketplace add <owner>/eng-system` → `/plugin install eng-system@eng-system` |
-| **Codex CLI** | `.agents/plugins/marketplace.json` | `codex plugin marketplace add <owner>/eng-system` → `codex plugin add eng-system@eng-system` |
-| **Cursor / Copilot** | 同上（Agent Plugins 1.0 标准） | 插件面板添加本仓库 |
-| **ZCode** | 插件级 `.zcode-plugin/plugin.json`（市场清单未公开） | 指向 `plugins/zcode/` |
-| **DSH** | 无插件市场 | 零安装：复制 `plugins/dsh/skills/*` 到 `~/.agents/skills/` |
+| **Claude Code** | `.claude-plugin/marketplace.json` | `claude plugin marketplace add TidaltoLabs/eng-system` → `claude plugin install eng-system@eng-system`（会话内用 `/plugin ...` 同样可用） |
+| **Codex CLI** | `.agents/plugins/marketplace.json` | `codex plugin marketplace add TidaltoLabs/eng-system` → `codex plugin add eng-system@eng-system` |
+| **ZCode** | 根 `marketplace.json`（同时兼容 `.claude-plugin/marketplace.json`） | 插件市场 → 添加 → 添加插件市场 → 填 `TidaltoLabs/eng-system`（**仅 UI 入口，无 CLI**） |
+| **Cursor / Copilot** | 同 Codex（Agent Plugins 1.0） | 插件面板添加本仓库 |
+| **DSH** | 无官方市场 | 零安装：`cp -R plugins/dsh/skills/* ~/.agents/skills/`；社区市场见 `adapters/dsh/README.md` |
+
+> 三条清单各自指向对应宿主目录：Claude → `plugins/claude/`，Codex/Cursor/Copilot → `plugins/agent-plugins/`，ZCode → `plugins/zcode/`。
 
 ### 零安装（不装插件）
 
