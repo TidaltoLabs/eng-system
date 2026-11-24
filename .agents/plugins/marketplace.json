@@ -18,7 +18,7 @@
       "interface": {
         "displayName": "Engineering System"
       },
-      "description": "五个工程文档体系技能（骨架 / 里程碑 / 调研 / 决策 / 审查）。",
+      "description": "七个工程文档体系技能（总入口 / 骨架 / 调研 / 决策 / 架构 / 里程碑 / 审查）。",
       "version": "0.2.0"
     }
   ]
