@@ -100,6 +100,7 @@ cp -R templates/* ~/.agents/templates/
 ```
 eng-system/
 ├── README.md
+├── README_EN.md         # 英文版 README（产物双语源之一）
 ├── AGENTS.md            # 贡献者规约
 ├── CHANGELOG.md
 ├── LICENSE              # MIT
