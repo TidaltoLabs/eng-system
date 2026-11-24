@@ -18,7 +18,7 @@
         "en": "Seven engineering documentation skills: eng-system / eng-bootstrap / eng-research / eng-decision / eng-architecture / eng-milestone / eng-audit.",
         "zh-CN": "七个工程文档体系技能：eng-system / eng-bootstrap / eng-research / eng-decision / eng-architecture / eng-milestone / eng-audit。"
       },
-      "version": "0.2.0",
+      "version": "0.3.0",
       "category": "developer-tools",
       "tags": [
         "engineering",

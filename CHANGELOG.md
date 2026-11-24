@@ -13,6 +13,8 @@ updated: 2026-11-24
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-11-25
+
 ### 新增
 
 - **可选机械化脚本**（`skills/<name>/scripts/`，bash + POSIX 工具，零网络依赖；正文均含等价人工手法）：
