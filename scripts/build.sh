@@ -56,7 +56,7 @@ check() {
   done
 
   echo "== 模板 =="
-  for t in AGENTS.md.tpl ROADMAP.md.tpl CHANGELOG.md.tpl README.md.tpl milestone.md.tpl research.md.tpl decision.md.tpl architecture.md.tpl review.md.tpl gitignore.tpl; do
+  for t in AGENTS.md.tpl ROADMAP.md.tpl CHANGELOG.md.tpl README.md.tpl milestone.md.tpl research.md.tpl decision.md.tpl architecture.md.tpl review.md.tpl gitignore.tpl research-index.md.tpl milestones-index.md.tpl architecture-index.md.tpl; do
     [[ -f "$ROOT/templates/$t" ]] || { red "  缺少 templates/$t"; fail=1; }
   done
 

@@ -35,7 +35,7 @@
 | `eng-milestone` | 里程碑怎么切、什么算能开工、什么算通过 | 九段结构 + **阶段分档门禁** |
 | `eng-audit` | 文档变多后的一致性校对 | 机械五项 + 逻辑四项 + **审查/修复两阶段** |
 
-每个技能的正文遵循同一套写法：一句话说明解决什么问题、可判真伪的判据、反模式表（错法 + 后果 + 正确做法）、可勾选的自检清单。写作与贡献规约见 [AGENTS.md](AGENTS.md)。
+每个技能的正文遵循同一套写法：一句话说明解决什么问题、可判真伪的判据、反模式表（错法 + 后果 + 正确做法）、可勾选的自检清单。部分技能附**可选机械化脚本**（bash + POSIX 工具、无网络；正文含等价人工手法，无脚本环境技能完整可用）。写作与贡献规约见 [AGENTS.md](AGENTS.md)。
 
 ---
 
@@ -76,9 +76,11 @@
 | **Codex CLI** | `.agents/plugins/marketplace.json` | `codex plugin marketplace add TidaltoLabs/eng-system` → `codex plugin add eng-system@eng-system` |
 | **ZCode** | 根 `marketplace.json`（同时兼容 `.claude-plugin/marketplace.json`） | 插件市场 → 添加 → 添加插件市场 → 填 `TidaltoLabs/eng-system`（**仅 UI 入口，无 CLI**） |
 | **Cursor / Copilot** | 同 Codex（Agent Plugins 1.0） | 插件面板添加本仓库 |
-| **DSH** | 社区市场（awesome-dsh-plugin） | bundle 安装：`dsh plugin --profile web add <仓库路径>/plugins/dsh`；或零安装 `cp -R plugins/dsh/skills/* ~/.agents/skills/`（详见 [adapters/dsh/README.md](adapters/dsh/README.md)） |
+| **DSH** | 暂未上架市场 | bundle 安装：`dsh plugin --profile web add "git+https://github.com/TidaltoLabs/eng-system.git#main&path:plugins/dsh"`（或本地仓库路径）；零安装见 [adapters/dsh/README.md](adapters/dsh/README.md) |
 
 > 三条清单各自指向对应宿主目录：Claude → `plugins/claude/`，Codex/Cursor/Copilot → `plugins/agent-plugins/`，ZCode → `plugins/zcode/`。
+
+> **更新机制因宿主而异**：Claude Code 侧清单不带版本号，更新随仓库 commit（按 commit SHA 追踪，推送即达）；ZCode / Codex 侧带 SemVer 版本（随根 `VERSION` 升号）；DSH bundle 版本同 `VERSION`，市场收录前用 git 安装请固定 commit 或分支。
 
 ### 零安装（不装插件）
 
@@ -108,7 +110,7 @@ eng-system/
 ├── CHANGELOG.md
 ├── LICENSE              # MIT
 ├── VERSION              # 版本号单一来源
-├── skills/              # 唯一手写内容源（Agent Skills 格式，7 个技能）
+├── skills/              # 唯一手写内容源（Agent Skills 格式，7 个技能 + 可选机械脚本）
 │   ├── eng-system/SKILL.md        # 总入口：路由 / 接手 / 执行 / 发版 / 交接
 │   ├── eng-bootstrap/SKILL.md
 │   ├── eng-research/SKILL.md
@@ -116,7 +118,7 @@ eng-system/
 │   ├── eng-architecture/SKILL.md
 │   ├── eng-milestone/SKILL.md
 │   └── eng-audit/SKILL.md
-├── templates/           # 10 份脚手架模板（含 architecture / review / gitignore）
+├── templates/           # 13 份脚手架模板（含 architecture / review / gitignore / 三份目录索引）
 ├── adapters/            # 各平台清单与适配（只放清单与适配层，不放内容）
 │   ├── agent-plugins/plugin.json
 │   ├── claude/.claude-plugin/plugin.json

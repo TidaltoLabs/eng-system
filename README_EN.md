@@ -32,7 +32,7 @@ The 7 skills map onto the three failure modes. Lost history is countered by `eng
 | `eng-milestone` | How to slice milestones, what qualifies as ready-to-code, what counts as done | Nine-part structure + **phase-tiered gates** |
 | `eng-audit` | Consistency review once documents multiply | Five mechanical checks + four logical checks + **two-phase review/fix** |
 
-Every skill follows the same writing discipline: one sentence on what problem it solves, falsifiable criteria, an anti-pattern table (wrong way + consequence + right way), and a checkable self-review list. Contribution rules live in [AGENTS.md](AGENTS.md) (Chinese).
+Every skill follows the same writing discipline: one sentence on what problem it solves, falsifiable criteria, an anti-pattern table (wrong way + consequence + right way), and a checkable self-review list. Some skills ship **optional mechanical scripts** (bash + POSIX tools, no network; the skill body always documents the equivalent manual method, so skills remain fully usable without a shell). Contribution rules live in [AGENTS.md](AGENTS.md) (Chinese).
 
 ---
 
@@ -73,9 +73,11 @@ This repository is both a **plugin marketplace** and the **plugin content**. Too
 | **Codex CLI** | `.agents/plugins/marketplace.json` | `codex plugin marketplace add TidaltoLabs/eng-system` → `codex plugin add eng-system@eng-system` |
 | **ZCode** | root `marketplace.json` (also compatible with `.claude-plugin/marketplace.json`) | Plugin Marketplace → Add → Add plugin marketplace → enter `TidaltoLabs/eng-system` (**UI only, no CLI**) |
 | **Cursor / Copilot** | same as Codex (Agent Plugins 1.0) | add this repo in the plugin panel |
-| **DSH** | community marketplaces (awesome-dsh-plugin) | bundle install: `dsh plugin --profile web add <repo>/plugins/dsh`; or zero-install `cp -R plugins/dsh/skills/* ~/.agents/skills/` (see [adapters/dsh/README.md](adapters/dsh/README.md)) |
+| **DSH** | not on a marketplace yet | bundle install: `dsh plugin --profile web add "git+https://github.com/TidaltoLabs/eng-system.git#main&path:plugins/dsh"` (or a local repo path); zero-install in [adapters/dsh/README.md](adapters/dsh/README.md) |
 
 > Each manifest points at its host directory: Claude → `plugins/claude/`, Codex/Cursor/Copilot → `plugins/agent-plugins/`, ZCode → `plugins/zcode/`.
+
+> **Update mechanics differ per host**: the Claude-side manifests carry no version number, so updates track repository commits (commit-SHA based, live on push); the ZCode / Codex manifests carry a SemVer version (bumped with the root `VERSION`); the DSH bundle version follows `VERSION` too — until a marketplace listing exists, pin a commit or branch when installing via git.
 
 ### Zero install (no plugin)
 
@@ -105,7 +107,7 @@ eng-system/
 ├── CHANGELOG.md
 ├── LICENSE              # MIT
 ├── VERSION              # single source of the version number
-├── skills/              # the only hand-written content (Agent Skills format, 7 skills)
+├── skills/              # the only hand-written content (Agent Skills format, 7 skills + optional scripts)
 │   ├── eng-system/SKILL.md        # entry: routing / onboarding / execution / release / handoff
 │   ├── eng-bootstrap/SKILL.md
 │   ├── eng-research/SKILL.md
@@ -113,7 +115,7 @@ eng-system/
 │   ├── eng-architecture/SKILL.md
 │   ├── eng-milestone/SKILL.md
 │   └── eng-audit/SKILL.md
-├── templates/           # 10 scaffold templates (incl. architecture / review / gitignore)
+├── templates/           # 13 scaffold templates (incl. architecture / review / gitignore / three directory indexes)
 ├── adapters/            # per-platform manifests & adaptation only (no content)
 │   ├── agent-plugins/plugin.json
 │   ├── claude/.claude-plugin/plugin.json

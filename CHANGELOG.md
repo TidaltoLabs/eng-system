@@ -15,6 +15,20 @@ updated: 2026-11-24
 
 ### 新增
 
+- **可选机械化脚本**（`skills/<name>/scripts/`，bash + POSIX 工具，零网络依赖；正文均含等价人工手法）：
+  - `eng-audit/scripts/mechanical-check.sh`：机械五项粗筛（悬空双链 / 编号一致性 / frontmatter / 路径引用 / 版本映射行提取），剔除代码块误报，输出 `文件:行号`
+  - `eng-research/scripts/keyword-residue.sh`：推翻回写后的旧结论残留扫描（自动排除留痕行）
+  - `eng-bootstrap/scripts/number-inventory.sh`：编号占用预检（D/A/R/M/NN 空间的占用、断号与下一个可用号）
+- **3 份目录索引模板**：`research-index` / `milestones-index` / `architecture-index`（模板数 10 → 13），对应三个技能强制要求的索引文件
+- **`eng-system`**：新增 mermaid 体系全景图（主路径 + 回路 + 产物引用链）与「子技能调用倾向」表（优先时机 / 输入 / 产物）
+
+### 变更
+
+- **7 个 SKILL.md 全量精炼重写**（1365 → 1201 行）：说明性文字压缩为判据与表格；触发词与调用边界重写（如 `eng-research`「验证」→「能力验证」、`eng-milestone`「验收」→「里程碑验收」、`eng-system` 补「该用哪个技能」「工程体系」）
+- **AGENTS.md 修正案**：脚本从「禁止」改为「可选辅助 + 门禁」——技能在无脚本环境必须完整可用、正文含等价人工手法、只用 POSIX 工具
+- `milestone.md.tpl` §6.1 去掉硬编码覆盖率「≥80%」（数字唯一权威在 AGENTS）；`research.md.tpl` 章节顺序对齐正文（修订在前、待确认在后）
+- `eng-audit` §八 机械检查示例编号泛化，硬编码的旧项目编号示例移除
+
 - **DSH bundle（`eng-system-dsh`）**：`plugins/dsh/` 从「仅零安装载荷」升级为可安装的 Cordis 插件包。provider 薄壳（`adapters/dsh/bundle/index.js`）运行时扫描包内 `skills/*/SKILL.md` 的 frontmatter，注册为 bundled skill provider（`ctx.skills.registerProvider`，rank = `BUNDLED_SKILL_RANK`）；代码不硬编码技能清单，内容仍只有一份。bundle 自带 `templates/`，`../../templates/` 相对引用在包内解析，安装后模板零拷贝
 - `scripts/build.sh`：`plugins/dsh/` 构建追加 bundle 三件套（package.json / cordis.patch.yml / index.js）拷贝与版本注入；自检新增 DSH bundle 门禁（三件套齐备、源版本与 VERSION 一致）
 
