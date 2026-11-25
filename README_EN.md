@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="logos/logo.svg" alt="eng-system logo" width="96" height="96" />
+<img src="logos/logo-256.png" alt="eng-system logo" width="128" height="128" />
 
 # eng-system
 
@@ -135,7 +135,7 @@ eng-system/
 │   ├── eng-milestone/SKILL.md
 │   └── eng-audit/SKILL.md
 ├── templates/           # 13 scaffold templates (incl. architecture / review / gitignore / three directory indexes)
-├── logos/               # project & plugin logo assets (logo.svg, shared by README and plugin manifests)
+├── logos/               # project & plugin logo assets (logo.svg + 512/256/128 transparent PNGs, shared by README and host manifests)
 ├── adapters/            # per-platform manifests & adaptation only (no content)
 │   ├── agent-plugins/plugin.json
 │   ├── antigravity/plugin.json

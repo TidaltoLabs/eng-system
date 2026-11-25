@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="logos/logo.svg" alt="eng-system logo" width="96" height="96" />
+<img src="logos/logo-256.png" alt="eng-system logo" width="128" height="128" />
 
 # eng-system
 
@@ -135,7 +135,7 @@ eng-system/
 │   ├── eng-milestone/SKILL.md
 │   └── eng-audit/SKILL.md
 ├── templates/           # 13 份脚手架模板（含 architecture / review / gitignore / 三份目录索引）
-├── logos/               # 项目与插件图标素材（logo.svg，供 README 与插件清单复用）
+├── logos/               # 项目与插件图标素材（logo.svg + 512/256/128 透明底 PNG，供 README 与各宿主清单复用）
 ├── adapters/            # 各平台清单与适配（只放清单与适配层，不放内容）
 │   ├── agent-plugins/plugin.json
 │   ├── antigravity/plugin.json

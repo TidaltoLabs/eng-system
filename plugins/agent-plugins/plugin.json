@@ -22,7 +22,10 @@
       "interface": {
         "displayName": "Engineering System",
         "shortDescription": "七个工程文档体系技能",
-        "category": "Productivity"
+        "category": "Productivity",
+        "brandColor": "#0EA5E9",
+        "logo": "./logos/logo.png",
+        "composerIcon": "./logos/logo.png"
       }
     }
   }
