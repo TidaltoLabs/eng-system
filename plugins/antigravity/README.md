@@ -92,14 +92,14 @@ This repository is both a **plugin marketplace** and the **plugin content**. Too
 |---|---|---|
 | **Claude Code** | `.claude-plugin/marketplace.json` | `claude plugin marketplace add TidaltoLabs/eng-system` → `claude plugin install eng-system@eng-system` (`/plugin ...` works in-session too) |
 | **Codex CLI** | `.agents/plugins/marketplace.json` | `codex plugin marketplace add TidaltoLabs/eng-system` → `codex plugin add eng-system@eng-system` |
-| **ZCode** | root `marketplace.json` (also compatible with `.claude-plugin/marketplace.json`) | Plugin Marketplace → Add → Add plugin marketplace → enter `TidaltoLabs/eng-system` (**UI only, no CLI**) |
+| **ZCode** | `.claude-plugin/marketplace.json` (preferred) & root `marketplace.json` | Plugin Marketplace → Add → Add plugin marketplace → enter `TidaltoLabs/eng-system` (**UI only, no CLI**) |
 | **Cursor / Copilot** | same as Codex (Agent Plugins 1.0) | add this repo in the plugin panel |
 | **Antigravity** | not on a marketplace yet | CLI install from GitHub subdir: `agy plugin install https://github.com/TidaltoLabs/eng-system/tree/main/plugins/antigravity` (syncs automatically to App / IDE; or copy `plugins/antigravity/` to `~/.gemini/config/plugins/eng-system/` or a project's `.agents/plugins/eng-system/`) |
 | **DSH** | not on a marketplace yet | bundle install: `dsh plugin --profile web add "git+https://github.com/TidaltoLabs/eng-system.git#main&path:plugins/dsh"` (or a local repo path); zero-install in [adapters/dsh/README.md](adapters/dsh/README.md) |
 
 > Each manifest points at its host directory: Claude → `plugins/claude/`, Codex/Cursor/Copilot → `plugins/agent-plugins/`, ZCode → `plugins/zcode/`. Antigravity installs directly from `plugins/antigravity/` (**do not pass the bare repo root URL**, or `agy` bulk-scans `plugins/` and lets the alphabetically later `claude` build overwrite `antigravity`).
 
-> **Update mechanics differ per host**: the Claude-side manifests carry no version number, so updates track repository commits (commit-SHA based, live on push); the ZCode / Codex manifests carry a SemVer version (bumped with the root `VERSION`); Antigravity GitHub URL installs are one-shot clones and do not auto-check upstream — re-run `agy plugin install` to update (your enabled/disabled toggle is preserved); the DSH bundle version follows `VERSION` too — until a marketplace listing exists, pin a commit or branch when installing via git.
+> **Update mechanics differ per host**: Claude Code, ZCode, Codex, and DSH all track updates via SemVer (bumped together with root `VERSION`); Antigravity GitHub URL installs are one-shot clones and do not auto-check upstream — re-run `agy plugin install` to update (your enabled/disabled toggle is preserved); until a DSH marketplace listing exists, pin a commit or branch when installing via git.
 
 ### Zero install (no plugin)
 

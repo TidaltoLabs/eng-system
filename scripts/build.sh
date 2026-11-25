@@ -123,8 +123,7 @@ I18NEOF
   fi
 
   echo "== 清单一致性 =="
-  # 所有清单里的 name 必须一致；version 策略：Claude 适配器不得含 version（钉死会阻断
-  # commit SHA 更新追踪），其余插件清单的 version 必须等于 VERSION
+  # 所有清单里的 name 必须一致；所有 plugin.json 与市场条目的 version 必须等于 VERSION
   python3 -I - "$ROOT" "$VERSION" <<'PYEOF'
 import json, sys, pathlib
 root = pathlib.Path(sys.argv[1]); ver = sys.argv[2]
@@ -144,12 +143,8 @@ for f in files:
     d = json.loads(f.read_text())
     n = d.get("name")
     if n: names.add(n)
-    # Claude 适配器不写 version：让 Claude Code 按 commit SHA 追踪更新
-    if f == root/"adapters/claude/.claude-plugin/plugin.json":
-        if "version" in d:
-            print(f"  [fail] {f.relative_to(root)} 含 version 字段——会钉死插件版本、阻断 HEAD 更新追踪，请删除"); bad = True
-    # 其余插件清单的 version 必须与 VERSION 一致
-    elif f.name == "plugin.json" and d.get("version") != ver:
+    # 所有插件清单的 version 必须与 VERSION 一致
+    if f.name == "plugin.json" and d.get("version") != ver:
         print(f"  [fail] {f.relative_to(root)} version={d.get('version')} != {ver}"); bad = True
     # 市场条目必须指向存在的目录，且版本一致
     for pl in d.get("plugins", []) or []:
@@ -161,12 +156,12 @@ for f in files:
             tgt = (root/path).resolve()
             if not tgt.exists():
                 print(f"  [fail] {f.relative_to(root)} -> {path} 不存在"); bad = True
-        if pl.get("version") and pl["version"] != ver:
-            print(f"  [fail] {f.relative_to(root)} 条目 version={pl['version']} != {ver}"); bad = True
+        if pl.get("version") != ver:
+            print(f"  [fail] {f.relative_to(root)} 条目 version={pl.get('version')} != {ver}"); bad = True
 if len(names) != 1:
     print(f"  [fail] 清单 name 不一致: {names}"); bad = True
 if not bad:
-    print(f"  name={names.pop()} 一致；version 策略通过（Claude 侧无 version，其余 ={ver}）；所有 source 路径存在")
+    print(f"  name={names.pop()} 一致；全部清单 version={ver}；所有 source 路径存在")
 sys.exit(1 if bad else 0)
 PYEOF
   [[ $? -eq 0 ]] || fail=1

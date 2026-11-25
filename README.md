@@ -89,14 +89,14 @@
 |---|---|---|
 | **Claude Code** | `.claude-plugin/marketplace.json` | `claude plugin marketplace add TidaltoLabs/eng-system` → `claude plugin install eng-system@eng-system`（会话内用 `/plugin ...` 同样可用） |
 | **Codex CLI** | `.agents/plugins/marketplace.json` | `codex plugin marketplace add TidaltoLabs/eng-system` → `codex plugin add eng-system@eng-system` |
-| **ZCode** | 根 `marketplace.json`（同时兼容 `.claude-plugin/marketplace.json`） | 插件市场 → 添加 → 添加插件市场 → 填 `TidaltoLabs/eng-system`（**仅 UI 入口，无 CLI**） |
+| **ZCode** | `.claude-plugin/marketplace.json`（优先）与根 `marketplace.json` | 插件市场 → 添加 → 添加插件市场 → 填 `TidaltoLabs/eng-system`（**仅 UI 入口，无 CLI**） |
 | **Cursor / Copilot** | 同 Codex（Agent Plugins 1.0） | 插件面板添加本仓库 |
 | **Antigravity** | 暂未上架市场 | CLI 从 GitHub 子目录安装：`agy plugin install https://github.com/TidaltoLabs/eng-system/tree/main/plugins/antigravity`（安装后 App / IDE 自动同步；也可复制 `plugins/antigravity/` 到 `~/.gemini/config/plugins/eng-system/` 或业务项目 `.agents/plugins/eng-system/`） |
 | **DSH** | 暂未上架市场 | bundle 安装：`dsh plugin --profile web add "git+https://github.com/TidaltoLabs/eng-system.git#main&path:plugins/dsh"`（或本地仓库路径）；零安装见 [adapters/dsh/README.md](adapters/dsh/README.md) |
 
 > 三条清单各自指向对应宿主目录：Claude → `plugins/claude/`，Codex/Cursor/Copilot → `plugins/agent-plugins/`，ZCode → `plugins/zcode/`；Antigravity 直接指向 `plugins/antigravity/`（**不要传仓库根 URL**，否则 `agy` 会批量扫描 `plugins/`，导致字母序靠后的 `claude` 产物覆盖 `antigravity`）。
 
-> **更新机制因宿主而异**：Claude Code 侧清单不带版本号，更新随仓库 commit（按 commit SHA 追踪，推送即达）；ZCode / Codex 侧带 SemVer 版本（随根 `VERSION` 升号）；Antigravity 的 GitHub URL 安装为一次性 clone 落盘，不会自动检查远端更新，升级需重新执行一次 `agy plugin install`（覆盖安装，保留启用/禁用状态）；DSH bundle 版本同 `VERSION`，市场收录前用 git 安装请固定 commit 或分支。
+> **更新机制因宿主而异**：Claude Code / ZCode / Codex / DSH 均统一按 SemVer 版本号更新（随根 `VERSION` 升号）；Antigravity 的 GitHub URL 安装为一次性 clone 落盘，不会自动检查远端更新，升级需重新执行一次 `agy plugin install`（覆盖安装，保留启用/禁用状态）；DSH 市场收录前用 git 安装请固定 commit 或分支。
 
 ### 零安装（不装插件）
 
