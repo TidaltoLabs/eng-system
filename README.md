@@ -1,3 +1,7 @@
+<p align="left">
+  <img src="logos/logo.svg" alt="eng-system logo" width="64" height="64" />
+</p>
+
 # eng-system · 工程体系技能组
 
 一套可跨项目复用的**工程文档体系**技能组：7 个 Agent Skills，把「接手 / 骨架 / 调研 / 决策 / 架构 / 里程碑 / 审查」固化成带门禁的流程约束。内容只有一份，构建到 Claude Code、Codex CLI、ZCode、Cursor / Copilot、Antigravity、DSH 等多类宿主。
@@ -117,6 +121,7 @@ eng-system/
 │   ├── eng-milestone/SKILL.md
 │   └── eng-audit/SKILL.md
 ├── templates/           # 13 份脚手架模板（含 architecture / review / gitignore / 三份目录索引）
+├── logos/               # 项目与插件图标素材（logo.svg，供 README 与插件清单复用）
 ├── adapters/            # 各平台清单与适配（只放清单与适配层，不放内容）
 │   ├── agent-plugins/plugin.json
 │   ├── antigravity/plugin.json
@@ -164,4 +169,4 @@ eng-system/
 
 ---
 
-当前版本 **v0.3.2**（单一来源：[VERSION](VERSION)）· 变更历史见 [CHANGELOG.md](CHANGELOG.md) · License: MIT
+当前版本 **v0.3.3**（单一来源：[VERSION](VERSION)）· 变更历史见 [CHANGELOG.md](CHANGELOG.md) · License: MIT

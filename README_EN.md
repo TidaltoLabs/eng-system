@@ -1,3 +1,7 @@
+<p align="left">
+  <img src="logos/logo.svg" alt="eng-system logo" width="64" height="64" />
+</p>
+
 # eng-system · Engineering Documentation Skill Suite
 
 A reusable **engineering documentation system** packaged as Agent Skills: 7 skills that harden "onboarding / skeleton / research / decisions / architecture / milestones / audits" into gated process constraints. One content source, built out to Claude Code, Codex CLI, ZCode, Cursor / Copilot, Antigravity, DSH and other hosts.
@@ -117,6 +121,7 @@ eng-system/
 │   ├── eng-milestone/SKILL.md
 │   └── eng-audit/SKILL.md
 ├── templates/           # 13 scaffold templates (incl. architecture / review / gitignore / three directory indexes)
+├── logos/               # project & plugin logo assets (logo.svg, shared by README and plugin manifests)
 ├── adapters/            # per-platform manifests & adaptation only (no content)
 │   ├── agent-plugins/plugin.json
 │   ├── antigravity/plugin.json
@@ -164,4 +169,4 @@ The anti-patterns and pitfalls in these skills were all actually stepped in — 
 
 ---
 
-Current version **v0.3.2** (single source: [VERSION](VERSION)) · Chinese readme: [README.md](README.md) · License: MIT
+Current version **v0.3.3** (single source: [VERSION](VERSION)) · Chinese readme: [README.md](README.md) · License: MIT

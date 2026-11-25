@@ -13,6 +13,14 @@ updated: 2026-11-25
 
 ## [Unreleased]
 
+## [0.3.3] - 2026-11-25
+
+### 新增
+
+- **项目与插件 Logo（`logos/logo.svg`）**：新增 `256×256` 透明背景工程风矢量图标（适配浅色/深色主题、约 10% 安全留白），供双语 README 与插件清单复用
+- `adapters/antigravity/plugin.json` 配置 `"logo": "logos/logo.svg"`，`agy plugin validate --strict` 达成 0 error / 0 warning / 0 note
+- `scripts/build.sh` 与 `adapters/dsh/bundle/package.json` 同步打包 `logos/` 到各宿主产物
+
 ## [0.3.2] - 2026-11-25
 
 ### 变更

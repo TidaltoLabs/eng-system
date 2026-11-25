@@ -211,6 +211,9 @@ stage() {
   mkdir -p "$dest"
   cp -R "$ROOT/skills"    "$dest/skills"
   cp -R "$ROOT/templates" "$dest/templates"
+  if [[ -d "$ROOT/logos" ]]; then
+    cp -R "$ROOT/logos"   "$dest/logos"
+  fi
   find "$dest" -name '.DS_Store' -delete
   # 产物 README 顶部加横幅，防止有人直接改构建产物
   # 双语：README.md（英文，官方市场惯例的默认语言）+ README_CN.md（中文）
