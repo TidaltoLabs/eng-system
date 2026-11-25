@@ -9,7 +9,7 @@
 
 **Engineering Documentation Skill Suite · Process Hardened into Falsifiable Gates**
 
-[![Version](https://img.shields.io/badge/version-v0.3.3-0EA5E9)](https://github.com/TidaltoLabs/eng-system/blob/main/VERSION)
+[![Version](https://img.shields.io/badge/version-v0.3.4-0EA5E9)](https://github.com/TidaltoLabs/eng-system/blob/main/VERSION)
 [![Agent Plugins](https://img.shields.io/badge/Agent_Plugins-1.0.0-334155)](https://agent-plugins.org/schemas/1.0.0/plugin.schema.json)
 [![Antigravity Plugin](https://img.shields.io/badge/Antigravity_Plugin-v1-334155)](https://antigravity.google/schemas/v1/plugin.json)
 [![Bundle](https://img.shields.io/badge/skills-7_%7C_templates_13-10B981)](#the-skills)
@@ -186,4 +186,4 @@ The anti-patterns and pitfalls in these skills were all actually stepped in — 
 
 ---
 
-Current version **v0.3.3** (single source: [VERSION](VERSION)) · Chinese readme: [README.md](README.md) · License: MIT
+Current version **v0.3.4** (single source: [VERSION](VERSION)) · Chinese readme: [README.md](README.md) · License: MIT

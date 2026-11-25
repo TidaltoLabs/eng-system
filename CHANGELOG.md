@@ -13,6 +13,21 @@ updated: 2026-11-25
 
 ## [Unreleased]
 
+## [0.3.4] - 2026-11-25
+
+### 新增
+
+- **多尺寸透明底 PNG 图标（`logos/`）**：由 `logos/logo.svg` 渲染并无损压缩三档 RGBA PNG：`logo.png`（`512×512`）、`logo-256.png`（`256×256`）、`logo-128.png`（`128×128`）
+- **全宿主图标声明补齐**：
+  - Claude Code：`adapters/claude/.claude-plugin/plugin.json` 新增 `"icon": "./logos/logo.png"`（通过 `claude plugin validate` 目录检查 0 警告）
+  - Agent Plugins 1.0（Codex / Cursor / Copilot）：`adapters/agent-plugins/plugin.json` 在 `extensions["com.openai"].interface` 下补齐 `logo`、`composerIcon` 与 `brandColor`
+  - DSH：`adapters/dsh/bundle/package.json` 补齐顶层 `icon` 与 `exports["./icon"]`（`./logos/logo.svg`）
+  - ZCode：根 `marketplace.json` 补齐 `icon`（GitHub Raw PNG URL）
+
+### 变更
+
+- **双语 README 头部改版**：`README.md` / `README_EN.md` 重构为居中大图标（`logos/logo-256.png`，`128×128` 展示）+ 版本/契约徽章行 + 中英文切换与快捷导航
+
 ## [0.3.3] - 2026-11-25
 
 ### 新增

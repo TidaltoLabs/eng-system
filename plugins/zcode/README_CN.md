@@ -9,7 +9,7 @@
 
 **工程文档体系技能组 · 把流程固化成可判真伪的门禁**
 
-[![Version](https://img.shields.io/badge/version-v0.3.3-0EA5E9)](https://github.com/TidaltoLabs/eng-system/blob/main/VERSION)
+[![Version](https://img.shields.io/badge/version-v0.3.4-0EA5E9)](https://github.com/TidaltoLabs/eng-system/blob/main/VERSION)
 [![Agent Plugins](https://img.shields.io/badge/Agent_Plugins-1.0.0-334155)](https://agent-plugins.org/schemas/1.0.0/plugin.schema.json)
 [![Antigravity Plugin](https://img.shields.io/badge/Antigravity_Plugin-v1-334155)](https://antigravity.google/schemas/v1/plugin.json)
 [![Bundle](https://img.shields.io/badge/skills-7_%7C_templates_13-10B981)](#技能一览)
@@ -186,4 +186,4 @@ eng-system/
 
 ---
 
-当前版本 **v0.3.3**（单一来源：[VERSION](VERSION)）· 变更历史见 [CHANGELOG.md](CHANGELOG.md) · License: MIT
+当前版本 **v0.3.4**（单一来源：[VERSION](VERSION)）· 变更历史见 [CHANGELOG.md](CHANGELOG.md) · License: MIT
