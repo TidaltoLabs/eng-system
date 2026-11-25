@@ -1,8 +1,22 @@
-<p align="left">
-  <img src="logos/logo.svg" alt="eng-system logo" width="64" height="64" />
-</p>
+<div align="center">
 
-# eng-system · 工程体系技能组
+<img src="logos/logo.svg" alt="eng-system logo" width="96" height="96" />
+
+# eng-system
+
+**工程文档体系技能组 · 把流程固化成可判真伪的门禁**
+
+[![Version](https://img.shields.io/badge/version-v0.3.3-0EA5E9)](https://github.com/TidaltoLabs/eng-system/blob/main/VERSION)
+[![Agent Plugins](https://img.shields.io/badge/Agent_Plugins-1.0.0-334155)](https://agent-plugins.org/schemas/1.0.0/plugin.schema.json)
+[![Antigravity Plugin](https://img.shields.io/badge/Antigravity_Plugin-v1-334155)](https://antigravity.google/schemas/v1/plugin.json)
+[![Bundle](https://img.shields.io/badge/skills-7_%7C_templates_13-10B981)](#技能一览)
+[![License: MIT](https://img.shields.io/badge/license-MIT-64748B)](LICENSE)
+
+简体中文 · [English](README_EN.md) &nbsp;|&nbsp; [安装](#安装) · [技能一览](#技能一览) · [怎么用](#怎么用) · [变更记录](https://github.com/TidaltoLabs/eng-system/blob/main/CHANGELOG.md)
+
+</div>
+
+---
 
 一套可跨项目复用的**工程文档体系**技能组：7 个 Agent Skills，把「接手 / 骨架 / 调研 / 决策 / 架构 / 里程碑 / 审查」固化成带门禁的流程约束。内容只有一份，构建到 Claude Code、Codex CLI、ZCode、Cursor / Copilot、Antigravity、DSH 等多类宿主。
 

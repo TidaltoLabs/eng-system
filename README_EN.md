@@ -1,8 +1,22 @@
-<p align="left">
-  <img src="logos/logo.svg" alt="eng-system logo" width="64" height="64" />
-</p>
+<div align="center">
 
-# eng-system · Engineering Documentation Skill Suite
+<img src="logos/logo.svg" alt="eng-system logo" width="96" height="96" />
+
+# eng-system
+
+**Engineering Documentation Skill Suite · Process Hardened into Falsifiable Gates**
+
+[![Version](https://img.shields.io/badge/version-v0.3.3-0EA5E9)](https://github.com/TidaltoLabs/eng-system/blob/main/VERSION)
+[![Agent Plugins](https://img.shields.io/badge/Agent_Plugins-1.0.0-334155)](https://agent-plugins.org/schemas/1.0.0/plugin.schema.json)
+[![Antigravity Plugin](https://img.shields.io/badge/Antigravity_Plugin-v1-334155)](https://antigravity.google/schemas/v1/plugin.json)
+[![Bundle](https://img.shields.io/badge/skills-7_%7C_templates_13-10B981)](#the-skills)
+[![License: MIT](https://img.shields.io/badge/license-MIT-64748B)](LICENSE)
+
+[简体中文](README.md) · English &nbsp;|&nbsp; [Installation](#installation) · [The Skills](#the-skills) · [Usage](#usage) · [Changelog](https://github.com/TidaltoLabs/eng-system/blob/main/CHANGELOG.md)
+
+</div>
+
+---
 
 A reusable **engineering documentation system** packaged as Agent Skills: 7 skills that harden "onboarding / skeleton / research / decisions / architecture / milestones / audits" into gated process constraints. One content source, built out to Claude Code, Codex CLI, ZCode, Cursor / Copilot, Antigravity, DSH and other hosts.
 
