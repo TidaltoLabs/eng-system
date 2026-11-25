@@ -1,7 +1,7 @@
 {
   "name": "eng-system-dsh",
   "description": "DeepSeek Harness bundle for the eng-system engineering documentation skill suite: seven skills (bootstrap / research / decision / architecture / milestone / audit, plus entry-point routing) registered as one bundled skill provider.",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "license": "MIT",
   "author": {
     "name": "TidaltoLabs",

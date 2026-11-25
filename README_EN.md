@@ -1,6 +1,6 @@
 # eng-system · Engineering Documentation Skill Suite
 
-A reusable **engineering documentation system** packaged as Agent Skills: 7 skills that harden "onboarding / skeleton / research / decisions / architecture / milestones / audits" into gated process constraints. One content source, built out to Claude Code, Codex CLI, ZCode, Cursor / Copilot, DSH and other hosts.
+A reusable **engineering documentation system** packaged as Agent Skills: 7 skills that harden "onboarding / skeleton / research / decisions / architecture / milestones / audits" into gated process constraints. One content source, built out to Claude Code, Codex CLI, ZCode, Cursor / Copilot, Antigravity, DSH and other hosts.
 
 > It is not a project-management template — it is **process constraints**, solving the problem of "documents that get written but never honored."
 
@@ -73,11 +73,12 @@ This repository is both a **plugin marketplace** and the **plugin content**. Too
 | **Codex CLI** | `.agents/plugins/marketplace.json` | `codex plugin marketplace add TidaltoLabs/eng-system` → `codex plugin add eng-system@eng-system` |
 | **ZCode** | root `marketplace.json` (also compatible with `.claude-plugin/marketplace.json`) | Plugin Marketplace → Add → Add plugin marketplace → enter `TidaltoLabs/eng-system` (**UI only, no CLI**) |
 | **Cursor / Copilot** | same as Codex (Agent Plugins 1.0) | add this repo in the plugin panel |
+| **Antigravity** | not on a marketplace yet | CLI install from GitHub subdir: `agy plugin install https://github.com/TidaltoLabs/eng-system/tree/main/plugins/antigravity` (syncs automatically to App / IDE; or copy `plugins/antigravity/` to `~/.gemini/config/plugins/eng-system/` or a project's `.agents/plugins/eng-system/`) |
 | **DSH** | not on a marketplace yet | bundle install: `dsh plugin --profile web add "git+https://github.com/TidaltoLabs/eng-system.git#main&path:plugins/dsh"` (or a local repo path); zero-install in [adapters/dsh/README.md](adapters/dsh/README.md) |
 
-> Each manifest points at its host directory: Claude → `plugins/claude/`, Codex/Cursor/Copilot → `plugins/agent-plugins/`, ZCode → `plugins/zcode/`.
+> Each manifest points at its host directory: Claude → `plugins/claude/`, Codex/Cursor/Copilot → `plugins/agent-plugins/`, ZCode → `plugins/zcode/`. Antigravity installs directly from `plugins/antigravity/` (**do not pass the bare repo root URL**, or `agy` bulk-scans `plugins/` and lets the alphabetically later `claude` build overwrite `antigravity`).
 
-> **Update mechanics differ per host**: the Claude-side manifests carry no version number, so updates track repository commits (commit-SHA based, live on push); the ZCode / Codex manifests carry a SemVer version (bumped with the root `VERSION`); the DSH bundle version follows `VERSION` too — until a marketplace listing exists, pin a commit or branch when installing via git.
+> **Update mechanics differ per host**: the Claude-side manifests carry no version number, so updates track repository commits (commit-SHA based, live on push); the ZCode / Codex manifests carry a SemVer version (bumped with the root `VERSION`); Antigravity GitHub URL installs are one-shot clones and do not auto-check upstream — re-run `agy plugin install` to update (your enabled/disabled toggle is preserved); the DSH bundle version follows `VERSION` too — until a marketplace listing exists, pin a commit or branch when installing via git.
 
 ### Zero install (no plugin)
 
@@ -118,6 +119,7 @@ eng-system/
 ├── templates/           # 13 scaffold templates (incl. architecture / review / gitignore / three directory indexes)
 ├── adapters/            # per-platform manifests & adaptation only (no content)
 │   ├── agent-plugins/plugin.json
+│   ├── antigravity/plugin.json
 │   ├── claude/.claude-plugin/plugin.json
 │   ├── zcode/.zcode-plugin/plugin.json
 │   └── dsh/             # DSH adaptation: bundle shell sources + install guide
@@ -125,6 +127,7 @@ eng-system/
 │       └── README.md
 ├── plugins/             # build artifacts (committed; marketplace manifests point here)
 │   ├── agent-plugins/   # Codex / Cursor / Copilot
+│   ├── antigravity/     # Google Antigravity (App / CLI / IDE)
 │   ├── claude/
 │   ├── zcode/
 │   └── dsh/             # installable DSH bundle (eng-system-dsh) + zero-install payload
@@ -161,4 +164,4 @@ The anti-patterns and pitfalls in these skills were all actually stepped in — 
 
 ---
 
-Current version **v0.3.0** (single source: [VERSION](VERSION)) · Chinese readme: [README.md](README.md) · License: MIT
+Current version **v0.3.1** (single source: [VERSION](VERSION)) · Chinese readme: [README.md](README.md) · License: MIT

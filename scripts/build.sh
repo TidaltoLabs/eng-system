@@ -130,6 +130,7 @@ import json, sys, pathlib
 root = pathlib.Path(sys.argv[1]); ver = sys.argv[2]
 files = [
     root/"adapters/agent-plugins/plugin.json",
+    root/"adapters/antigravity/plugin.json",
     root/"adapters/claude/.claude-plugin/plugin.json",
     root/"adapters/zcode/.zcode-plugin/plugin.json",
     root/".claude-plugin/marketplace.json",
@@ -210,6 +211,7 @@ stage() {
   mkdir -p "$dest"
   cp -R "$ROOT/skills"    "$dest/skills"
   cp -R "$ROOT/templates" "$dest/templates"
+  find "$dest" -name '.DS_Store' -delete
   # 产物 README 顶部加横幅，防止有人直接改构建产物
   # 双语：README.md（英文，官方市场惯例的默认语言）+ README_CN.md（中文）
   {
@@ -246,6 +248,17 @@ build() {
   cp "$ROOT/adapters/agent-plugins/plugin.json" "$d/plugin.json"
   inject_version "$d/plugin.json"
   green "  plugins/agent-plugins/"
+
+  # Antigravity（Google Antigravity App / CLI / IDE）
+  d="$OUT/antigravity"
+  stage "$d"
+  cp "$ROOT/adapters/antigravity/plugin.json" "$d/plugin.json"
+  inject_version "$d/plugin.json"
+  green "  plugins/antigravity/"
+  if command -v agy >/dev/null 2>&1; then
+    agy plugin validate --strict "$d" >/dev/null
+    green "  agy plugin validate --strict 通过"
+  fi
 
   # Claude Code
   d="$OUT/claude"

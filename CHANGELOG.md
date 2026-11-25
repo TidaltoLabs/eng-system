@@ -2,7 +2,7 @@
 title: 变更记录
 type: changelog
 status: active
-updated: 2026-11-24
+updated: 2026-11-25
 ---
 
 # CHANGELOG
@@ -12,6 +12,14 @@ updated: 2026-11-24
 ---
 
 ## [Unreleased]
+
+## [0.3.1] - 2026-11-25
+
+### 新增
+
+- **Antigravity（agy）适配（`adapters/antigravity/plugin.json` → `plugins/antigravity/`）**：基于官方 schema（`https://antigravity.google/schemas/v1/plugin.json`）生成原生 Antigravity 插件产物，含 `displayName`、`suggestedPrompts` 等 App/CLI 展示字段；支持 `agy plugin install https://github.com/TidaltoLabs/eng-system/tree/main/plugins/antigravity` 直接安装，技能与 `templates/` 一并落盘
+- `scripts/build.sh`：构建 `plugins/antigravity/`、纳入清单一致性校验、本机存在 `agy` 时自动执行 `agy plugin validate --strict`，并在打包阶段清理 `.DS_Store` 残留
+- `README.md` / `README_EN.md`：补充 Antigravity（agy）安装命令、更新机制与裸仓库 URL 注意事项
 
 ## [0.3.0] - 2026-11-25
 

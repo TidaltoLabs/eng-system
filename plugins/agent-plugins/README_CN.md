@@ -3,7 +3,7 @@
 
 # eng-system · 工程体系技能组
 
-一套可跨项目复用的**工程文档体系**技能组：7 个 Agent Skills，把「接手 / 骨架 / 调研 / 决策 / 架构 / 里程碑 / 审查」固化成带门禁的流程约束。内容只有一份，构建到 Claude Code、Codex CLI、ZCode、Cursor / Copilot、DSH 等多类宿主。
+一套可跨项目复用的**工程文档体系**技能组：7 个 Agent Skills，把「接手 / 骨架 / 调研 / 决策 / 架构 / 里程碑 / 审查」固化成带门禁的流程约束。内容只有一份，构建到 Claude Code、Codex CLI、ZCode、Cursor / Copilot、Antigravity、DSH 等多类宿主。
 
 > 它不是项目管理模板，而是**流程约束**——解决的是"文档写了但没人守"的问题。
 
@@ -76,11 +76,12 @@
 | **Codex CLI** | `.agents/plugins/marketplace.json` | `codex plugin marketplace add TidaltoLabs/eng-system` → `codex plugin add eng-system@eng-system` |
 | **ZCode** | 根 `marketplace.json`（同时兼容 `.claude-plugin/marketplace.json`） | 插件市场 → 添加 → 添加插件市场 → 填 `TidaltoLabs/eng-system`（**仅 UI 入口，无 CLI**） |
 | **Cursor / Copilot** | 同 Codex（Agent Plugins 1.0） | 插件面板添加本仓库 |
+| **Antigravity** | 暂未上架市场 | CLI 从 GitHub 子目录安装：`agy plugin install https://github.com/TidaltoLabs/eng-system/tree/main/plugins/antigravity`（安装后 App / IDE 自动同步；也可复制 `plugins/antigravity/` 到 `~/.gemini/config/plugins/eng-system/` 或业务项目 `.agents/plugins/eng-system/`） |
 | **DSH** | 暂未上架市场 | bundle 安装：`dsh plugin --profile web add "git+https://github.com/TidaltoLabs/eng-system.git#main&path:plugins/dsh"`（或本地仓库路径）；零安装见 [adapters/dsh/README.md](adapters/dsh/README.md) |
 
-> 三条清单各自指向对应宿主目录：Claude → `plugins/claude/`，Codex/Cursor/Copilot → `plugins/agent-plugins/`，ZCode → `plugins/zcode/`。
+> 三条清单各自指向对应宿主目录：Claude → `plugins/claude/`，Codex/Cursor/Copilot → `plugins/agent-plugins/`，ZCode → `plugins/zcode/`；Antigravity 直接指向 `plugins/antigravity/`（**不要传仓库根 URL**，否则 `agy` 会批量扫描 `plugins/`，导致字母序靠后的 `claude` 产物覆盖 `antigravity`）。
 
-> **更新机制因宿主而异**：Claude Code 侧清单不带版本号，更新随仓库 commit（按 commit SHA 追踪，推送即达）；ZCode / Codex 侧带 SemVer 版本（随根 `VERSION` 升号）；DSH bundle 版本同 `VERSION`，市场收录前用 git 安装请固定 commit 或分支。
+> **更新机制因宿主而异**：Claude Code 侧清单不带版本号，更新随仓库 commit（按 commit SHA 追踪，推送即达）；ZCode / Codex 侧带 SemVer 版本（随根 `VERSION` 升号）；Antigravity 的 GitHub URL 安装为一次性 clone 落盘，不会自动检查远端更新，升级需重新执行一次 `agy plugin install`（覆盖安装，保留启用/禁用状态）；DSH bundle 版本同 `VERSION`，市场收录前用 git 安装请固定 commit 或分支。
 
 ### 零安装（不装插件）
 
@@ -121,6 +122,7 @@ eng-system/
 ├── templates/           # 13 份脚手架模板（含 architecture / review / gitignore / 三份目录索引）
 ├── adapters/            # 各平台清单与适配（只放清单与适配层，不放内容）
 │   ├── agent-plugins/plugin.json
+│   ├── antigravity/plugin.json
 │   ├── claude/.claude-plugin/plugin.json
 │   ├── zcode/.zcode-plugin/plugin.json
 │   └── dsh/             # DSH 适配：bundle 薄壳源 + 安装说明
@@ -128,6 +130,7 @@ eng-system/
 │       └── README.md
 ├── plugins/             # 构建产物（入库，供市场清单指向）
 │   ├── agent-plugins/   # Codex / Cursor / Copilot
+│   ├── antigravity/     # Google Antigravity（App / CLI / IDE）
 │   ├── claude/
 │   ├── zcode/
 │   └── dsh/             # 可安装 DSH bundle（eng-system-dsh）+ 零安装载荷
@@ -164,4 +167,4 @@ eng-system/
 
 ---
 
-当前版本 **v0.3.0**（单一来源：[VERSION](VERSION)）· 变更历史见 [CHANGELOG.md](CHANGELOG.md) · License: MIT
+当前版本 **v0.3.1**（单一来源：[VERSION](VERSION)）· 变更历史见 [CHANGELOG.md](CHANGELOG.md) · License: MIT
