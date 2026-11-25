@@ -167,4 +167,4 @@ The anti-patterns and pitfalls in these skills were all actually stepped in — 
 
 ---
 
-Current version **v0.3.1** (single source: [VERSION](VERSION)) · Chinese readme: [README.md](README.md) · License: MIT
+Current version **v0.3.2** (single source: [VERSION](VERSION)) · Chinese readme: [README.md](README.md) · License: MIT

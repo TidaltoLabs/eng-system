@@ -164,4 +164,4 @@ eng-system/
 
 ---
 
-当前版本 **v0.3.1**（单一来源：[VERSION](VERSION)）· 变更历史见 [CHANGELOG.md](CHANGELOG.md) · License: MIT
+当前版本 **v0.3.2**（单一来源：[VERSION](VERSION)）· 变更历史见 [CHANGELOG.md](CHANGELOG.md) · License: MIT

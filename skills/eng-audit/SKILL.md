@@ -1,6 +1,6 @@
 ---
 name: eng-audit
-description: 对文档库做一致性与逻辑审查：悬空链接、编号冲突、结论矛盾、陈旧表述，分级输出清单并可按需修复。适用于文档变多后校对、结论被推翻后回扫、准备冻结基线、迁移后回归时。触发词：一致性审查、校对、审查文档、文档体检、冻结基线、检查矛盾、查一下文档有没有矛盾、编号检查、audit。
+description: 对项目工程文档库（docs/、AGENTS.md、ROADMAP.md）做机械+逻辑一致性审查（死链、编号冲突、版本映射、结论矛盾、过期表述），分审查与修复两阶段。适用于文档变多后体检、推翻回写后复查或冻结基线；不用于代码安全审计或文案错别字校对。触发词：一致性审查、文档校对、审查文档、文档体检、过期文档、死链、检查矛盾、冻结基线、doc audit。
 ---
 
 # eng-audit · 一致性与逻辑审查
@@ -42,7 +42,7 @@ description: 对文档库做一致性与逻辑审查：悬空链接、编号冲�
 4. **文件路径引用**：提取 `docs/xxx/yyy.md` 类路径核对存在。已存在文档的引用失效 = 真问题；未来文档的计划引用 = 正常，但需确认编号未占用
 5. **frontmatter 完整性**：`title` / `type` / `updated` 齐备；`type`、`status` 取值在 `AGENTS.md` 声明的枚举内
 
-**可选脚本加速**：`scripts/mechanical-check.sh [目录]`——一次跑完五项粗筛（已剔除代码块误报，输出 `文件:行号`，版本映射仅提取行供人工比对）。无脚本环境按上文手法逐项手工 grep。
+**可选脚本加速**：本技能目录下的 `scripts/mechanical-check.sh [目录]`——一次跑完五项粗筛（已剔除代码块误报，输出 `文件:行号`，版本映射仅提取行供人工比对）。无脚本环境按上文手法逐项手工 grep。
 
 ---
 
@@ -95,8 +95,8 @@ description: 对文档库做一致性与逻辑审查：悬空链接、编号冲�
 docs/reviews/R<N>-<slug>.md
 ```
 
-- `R<N>` 与决策的 `D<N>` 分开，不抢号（预检用 `eng-bootstrap` 的 `scripts/number-inventory.sh`）
-- 用 `templates/review.md.tpl`；还没有 `docs/reviews/` 就创建
+- `R<N>` 与决策的 `D<N>` 分开，不抢号（预检用 `eng-bootstrap` 技能目录下的 `scripts/number-inventory.sh`）
+- 用 `../../templates/review.md.tpl`；还没有 `docs/reviews/` 就创建
 - 报告至少含：范围与方法 / 阻断级 / 建议级 / 登记但不修（含理由）/ 冻结基线 / 待办
 
 ---
