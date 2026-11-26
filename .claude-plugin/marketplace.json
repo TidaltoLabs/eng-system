@@ -1,19 +1,19 @@
 {
-  "name": "eng-system",
+  "name": "tidalto-plugins",
   "owner": {
     "name": "TidaltoLabs",
     "url": "https://github.com/TidaltoLabs"
   },
   "metadata": {
-    "description": "工程文档体系技能组：总入口路由、骨架引导、调研协议、决策记录、架构规格、里程碑规划与验收、一致性审查。"
+    "description": "TidaltoLabs 官方插件市场：收录可复用的工程文档体系、品牌套件制作等跨宿主 Agent 插件。"
   },
   "plugins": [
     {
       "name": "eng-system",
-      "source": "./plugins/claude",
+      "source": "./plugins/eng-system/claude",
       "version": "0.3.4",
       "displayName": "Engineering System",
-      "icon": "https://raw.githubusercontent.com/TidaltoLabs/eng-system/main/logos/logo.png",
+      "icon": "https://raw.githubusercontent.com/TidaltoLabs/tidalto-plugins/main/packages/eng-system/logos/logo.png",
       "description": "七个工程文档体系技能：eng-system / eng-bootstrap / eng-research / eng-decision / eng-architecture / eng-milestone / eng-audit。",
       "description_i18n": {
         "en": "Seven engineering documentation skills: eng-system / eng-bootstrap / eng-research / eng-decision / eng-architecture / eng-milestone / eng-audit.",
@@ -27,6 +27,28 @@
         "engineering",
         "documentation",
         "workflow"
+      ]
+    },
+    {
+      "name": "brand-kit-maker",
+      "source": "./plugins/brand-kit-maker/claude",
+      "version": "0.1.1",
+      "displayName": "品牌制作套件",
+      "description": "从品牌需求和设计讨论出发，定稿 Logo、配色、文案与字体，并导出站点品牌套件（需宿主具备生图能力，面向 Claude Code / Codex）。",
+      "description_i18n": {
+        "en": "Guide brand discovery, finalize logo, palette, copy, and typography, and export a complete web brand kit (requires image generation; built for Claude Code & Codex).",
+        "zh-CN": "从品牌需求和设计讨论出发，定稿 Logo、配色、文案与字体，并导出站点品牌套件（需宿主具备生图能力，面向 Claude Code / Codex）。"
+      },
+      "author": {
+        "name": "TidaltoLabs"
+      },
+      "category": "design",
+      "tags": [
+        "branding",
+        "logo",
+        "design",
+        "brand-kit",
+        "image-generation"
       ]
     }
   ]

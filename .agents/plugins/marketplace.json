@@ -1,14 +1,14 @@
 {
-  "name": "eng-system",
+  "name": "tidalto-plugins",
   "interface": {
-    "displayName": "Engineering System"
+    "displayName": "Tidalto Plugins"
   },
   "plugins": [
     {
       "name": "eng-system",
       "source": {
         "source": "local",
-        "path": "./plugins/agent-plugins"
+        "path": "./plugins/eng-system/agent-plugins"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -20,6 +20,23 @@
       },
       "description": "七个工程文档体系技能（总入口 / 骨架 / 调研 / 决策 / 架构 / 里程碑 / 审查）。",
       "version": "0.3.4"
+    },
+    {
+      "name": "brand-kit-maker",
+      "source": {
+        "source": "local",
+        "path": "./plugins/brand-kit-maker/agent-plugins"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Creativity",
+      "interface": {
+        "displayName": "品牌制作套件"
+      },
+      "description": "从品牌需求和设计讨论出发，定稿 Logo、配色、文案与字体，并导出站点品牌套件。",
+      "version": "0.1.1"
     }
   ]
 }

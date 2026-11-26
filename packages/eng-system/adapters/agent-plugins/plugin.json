@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "eng-system",
+  "version": "0.3.4",
+  "description": "工程文档体系技能组：总入口路由、骨架引导、调研协议、决策记录、架构规格、里程碑规划与验收、一致性审查。适用于任何需要长期维护文档的项目。",
+  "author": {
+    "name": "TidaltoLabs"
+  },
+  "repository": "https://github.com/TidaltoLabs/tidalto-plugins",
+  "license": "MIT",
+  "keywords": [
+    "engineering",
+    "workflow",
+    "documentation",
+    "milestone",
+    "research",
+    "decision-record",
+    "audit"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Engineering System",
+        "shortDescription": "七个工程文档体系技能",
+        "category": "Productivity",
+        "brandColor": "#0EA5E9",
+        "logo": "./logos/logo.png",
+        "composerIcon": "./logos/logo.png"
+      }
+    }
+  }
+}

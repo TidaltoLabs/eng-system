@@ -1,0 +1,82 @@
+{
+  "name": "Ravn Kolchis",
+  "slug": "ravn-kolchis",
+  "subtitle": "Pretium laborum non vile",
+  "twoLineName": [
+    "Ravn",
+    "Kolchis"
+  ],
+  "description": "以金羊毛和渡鸦组成主图，把 RK 的线索藏在图形中。青玉绿与暖金为主，浅蓝只作点缀。",
+  "logo": {
+    "path": "logo/source/ravn-kolchis-approved.png",
+    "archive": "logo/source/ravn-kolchis-key.png",
+    "mode": "alpha",
+    "alphaThreshold": 1,
+    "masterSize": 1254
+  },
+  "palette": {
+    "渡鸦主色": "#72AB9E",
+    "金羊毛主色": "#F4BF57",
+    "蓝色条纹点缀": "#6686B8"
+  },
+  "surfaces": {
+    "light": {
+      "name": "#34756D",
+      "subtitle": "#B5812E",
+      "background": "#F6F2E9"
+    },
+    "dark": {
+      "name": "#C1E1D4",
+      "subtitle": "#F0C66D",
+      "background": "#1B373D"
+    }
+  },
+  "font": {
+    "family": "Cormorant Garamond",
+    "regular": "",
+    "italic": "",
+    "license": "",
+    "nameStyle": "regular",
+    "subtitleStyle": "italic"
+  },
+  "weights": {
+    "bolder": {
+      "titleStroke": 3.5,
+      "subtitleStroke": 1.9
+    },
+    "heavier": {
+      "titleStroke": 5,
+      "subtitleStroke": 2.8
+    }
+  },
+  "layouts": [
+    {
+      "key": "horizontal-single",
+      "direction": "horizontal",
+      "lines": 1,
+      "width": 3000,
+      "height": 1120
+    },
+    {
+      "key": "vertical-single-line",
+      "direction": "vertical",
+      "lines": 1,
+      "width": 1800,
+      "height": 1900
+    },
+    {
+      "key": "vertical-two-line",
+      "direction": "vertical",
+      "lines": 2,
+      "width": 1800,
+      "height": 2100
+    }
+  ],
+  "approval": {
+    "logo": true,
+    "palette": true,
+    "copy": true,
+    "typography": true,
+    "proof": true
+  }
+}

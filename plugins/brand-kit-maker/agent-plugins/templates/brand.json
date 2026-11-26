@@ -1,0 +1,74 @@
+{
+  "name": "Example Brand",
+  "slug": "example-brand",
+  "subtitle": "",
+  "twoLineName": [],
+  "description": "填写品牌意象与使用场景。",
+  "logo": {
+    "path": "approved-logo.png",
+    "archive": "",
+    "mode": "alpha",
+    "alphaThreshold": 1,
+    "masterSize": 1254,
+    "keyColor": "#FF00FF",
+    "keyTolerance": 10,
+    "keyFeather": 40
+  },
+  "palette": {
+    "主色": "#079FFA",
+    "点缀色": "#FBBF02"
+  },
+  "surfaces": {
+    "light": {
+      "name": "#155FAF",
+      "subtitle": "#A76B00",
+      "background": "#F4F8FC"
+    },
+    "dark": {
+      "name": "#ACDFFF",
+      "subtitle": "#FFD15A",
+      "background": "#10253F"
+    }
+  },
+  "font": {
+    "family": "Cormorant Garamond",
+    "regular": "",
+    "italic": "",
+    "license": "",
+    "nameStyle": "regular",
+    "subtitleStyle": "italic"
+  },
+  "weights": {
+    "bolder": {
+      "titleStroke": 5.6,
+      "subtitleStroke": 3.7
+    },
+    "heavier": {
+      "titleStroke": 8,
+      "subtitleStroke": 5.5
+    }
+  },
+  "layouts": [
+    {
+      "key": "horizontal",
+      "direction": "horizontal",
+      "lines": 1,
+      "width": 2600,
+      "height": 1000
+    },
+    {
+      "key": "vertical",
+      "direction": "vertical",
+      "lines": 1,
+      "width": 1600,
+      "height": 1750
+    }
+  ],
+  "approval": {
+    "logo": false,
+    "palette": false,
+    "copy": false,
+    "typography": false,
+    "proof": false
+  }
+}

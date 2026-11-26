@@ -1,0 +1,10 @@
+{
+  "name": "brand-kit-maker",
+  "version": "0.1.1",
+  "description": "从品牌需求和设计讨论出发，定稿 Logo、配色、文案与字体，并导出站点品牌套件（需宿主具备生图能力）。",
+  "author": {
+    "name": "TidaltoLabs"
+  },
+  "repository": "https://github.com/TidaltoLabs/tidalto-plugins",
+  "license": "MIT"
+}

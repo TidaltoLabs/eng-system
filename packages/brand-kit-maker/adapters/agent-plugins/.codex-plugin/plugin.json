@@ -1,0 +1,14 @@
+{
+  "name": "brand-kit-maker",
+  "version": "0.1.1",
+  "description": "从品牌需求和设计讨论出发，定稿 Logo、配色、文案与字体，并导出站点品牌套件。",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "品牌制作套件",
+    "shortDescription": "讨论并定稿 Logo、配色、文案与字体",
+    "longDescription": "以可复现的 Ravn Kolchis 案例演示透明 Logo、网站和 Windows 图标、独立文字图与多种图文组合的制作。",
+    "category": "Creativity",
+    "capabilities": ["Interactive"],
+    "defaultPrompt": ["帮我从品牌需求开始，讨论 Logo、配色、文案和字体，并制作完整的站点品牌套件。"]
+  }
+}

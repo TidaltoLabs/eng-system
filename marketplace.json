@@ -1,9 +1,9 @@
 {
-  "name": "eng-system",
-  "description": "工程文档体系技能组：总入口路由、骨架引导、调研协议、决策记录、架构规格、里程碑规划与验收、一致性审查。",
+  "name": "tidalto-plugins",
+  "description": "TidaltoLabs 官方插件市场：收录可复用的工程文档体系等跨宿主 Agent 插件。",
   "description_i18n": {
-    "en": "Engineering documentation skill suite: entry routing, skeleton bootstrap, research protocol, decision records, architecture specs, milestone planning & acceptance, consistency audits.",
-    "zh-CN": "工程文档体系技能组：总入口路由、骨架引导、调研协议、决策记录、架构规格、里程碑规划与验收、一致性审查。"
+    "en": "TidaltoLabs official plugin marketplace: reusable cross-host agent plugins including the engineering documentation suite.",
+    "zh-CN": "TidaltoLabs 官方插件市场：收录可复用的工程文档体系等跨宿主 Agent 插件。"
   },
   "owner": {
     "name": "TidaltoLabs",
@@ -12,14 +12,14 @@
   "plugins": [
     {
       "name": "eng-system",
-      "source": "./plugins/zcode",
+      "source": "./plugins/eng-system/zcode",
       "description": "七个工程文档体系技能：eng-system / eng-bootstrap / eng-research / eng-decision / eng-architecture / eng-milestone / eng-audit。",
       "description_i18n": {
         "en": "Seven engineering documentation skills: eng-system / eng-bootstrap / eng-research / eng-decision / eng-architecture / eng-milestone / eng-audit.",
         "zh-CN": "七个工程文档体系技能：eng-system / eng-bootstrap / eng-research / eng-decision / eng-architecture / eng-milestone / eng-audit。"
       },
       "version": "0.3.4",
-      "icon": "https://raw.githubusercontent.com/TidaltoLabs/eng-system/main/logos/logo.png",
+      "icon": "https://raw.githubusercontent.com/TidaltoLabs/tidalto-plugins/main/packages/eng-system/logos/logo.png",
       "category": "developer-tools",
       "tags": [
         "engineering",
