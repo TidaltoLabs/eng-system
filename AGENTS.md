@@ -79,6 +79,7 @@ description: <清晰描述 + 适用场景 + 触发词 / 负向边界>
 - 新增技能 → minor +1，并同步插件 README
 - 新增插件 → 新建 `packages/<plugin>/`，补齐目标宿主 `adapters/` 与对应根市场清单，并同步根 `README.md` / `README_EN.md`
 - 破坏兼容 → major +1，并在对应 CHANGELOG 写迁移方式
+- **不打仓库级 git tag**：多插件共享同一仓库，仓库级 `vX.Y.Z` tag 无对应语义；各插件版本仅以 `packages/<plugin>/VERSION`、各宿主清单中的 `version` 字段与对应 `CHANGELOG.md` 为唯一依据，直接提交推送 `main` 即可
 
 ---
 
