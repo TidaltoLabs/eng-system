@@ -23,5 +23,6 @@ updated: 2026-11-26
 
 ### 新增
 
+- **`brand-kit-maker` 升级至 v0.1.2**：新增暖色调色卡扇形设计风格图标 `packages/brand-kit-maker/logos/`（`logo.svg` + 512/256/128 透明底 PNG），补齐 Claude Code / Codex 清单与 `.claude-plugin/marketplace.json` 的图标声明，并升级双语 README 头部
 - **新插件 `brand-kit-maker` v0.1.1**（`packages/brand-kit-maker/`）：承接面向具备原生生图能力的 **Claude Code** 与 **Codex** 的品牌制作套件插件（含 `brand-kit` 技能、需求/交付参考、PowerShell 7 导出脚本、Cormorant Garamond 字体及 Ravn Kolchis 案例）
 - `eng-system` 保持 **v0.3.4**（完整历史见 [packages/eng-system/CHANGELOG.md](packages/eng-system/CHANGELOG.md)），同步更新全部仓库链接与安装路径至 `TidaltoLabs/tidalto-plugins`

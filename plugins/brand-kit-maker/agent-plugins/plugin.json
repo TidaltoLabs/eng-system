@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "brand-kit-maker",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "从品牌需求和设计讨论出发，定稿 Logo、配色、文案与字体，并导出站点品牌套件。",
   "author": {
     "name": "TidaltoLabs"
@@ -24,6 +24,9 @@
         "longDescription": "以可复现的 Ravn Kolchis 案例演示透明 Logo、网站和 Windows 图标、独立文字图与多种图文组合的制作。",
         "category": "Creativity",
         "capabilities": ["Interactive"],
+        "brandColor": "#D94E3B",
+        "logo": "./logos/logo.png",
+        "composerIcon": "./logos/logo.png",
         "defaultPrompt": "帮我从品牌需求开始，讨论 Logo、配色、文案和字体，并制作完整的站点品牌套件。"
       }
     }

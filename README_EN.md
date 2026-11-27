@@ -26,7 +26,7 @@ This repository is the official **TidaltoLabs** Agent Plugin Marketplace (evolve
 | Plugin | Version | Summary | Skills | Claude Code | Codex / Cursor / Copilot | Antigravity | ZCode | DSH | Docs |
 |---|---:|---|---:|:---:|:---:|:---:|:---:|:---:|---|
 | **[eng-system](packages/eng-system/README_EN.md)** | `0.3.4` | Engineering documentation skill suite: onboarding, skeleton bootstrap, research protocol, ADRs, architecture specs, milestones & acceptance, consistency audits | 7 | ✅ | ✅ | ✅ | ✅ | ✅ | [EN](packages/eng-system/README_EN.md) · [中文](packages/eng-system/README.md) |
-| **[brand-kit-maker](packages/brand-kit-maker/README_EN.md)** | `0.1.1` | Interactive brand discovery & sign-off workflow for logo, palette, copy, and typography, with PowerShell brand-kit export | 1 | ✅ | ✅ | — | — | — | [EN](packages/brand-kit-maker/README_EN.md) · [中文](packages/brand-kit-maker/README.md) |
+| **[brand-kit-maker](packages/brand-kit-maker/README_EN.md)** | `0.1.2` | Interactive brand discovery & sign-off workflow for logo, palette, copy, and typography, with PowerShell brand-kit export | 1 | ✅ | ✅ | — | — | — | [EN](packages/brand-kit-maker/README_EN.md) · [中文](packages/brand-kit-maker/README.md) |
 
 > **Why is `brand-kit-maker` currently scoped to Claude Code & Codex?**
 > Its interactive design phase relies on native image generation and visual proof review inside the host session, so it currently targets Claude Code and Codex. Its export scripts run on Windows PowerShell 7. Support for additional hosts may be added later.
@@ -121,7 +121,7 @@ tidalto-plugins/
 │   │   ├── templates/
 │   │   ├── logos/
 │   │   └── adapters/
-│   └── brand-kit-maker/               # v0.1.1: brand-kit skill + templates + scripts + fonts + example + 2 adapters
+│   └── brand-kit-maker/               # v0.1.2: brand-kit skill + templates + scripts + fonts + example + logos + 2 adapters
 │       ├── VERSION
 │       ├── README.md / README_EN.md
 │       ├── skills/

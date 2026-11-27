@@ -1,4 +1,20 @@
+<div align="center">
+
+<img src="logos/logo-256.png" alt="brand-kit-maker logo" width="112" height="112" />
+
 # Brand Kit Maker
+
+**Finalize Logo, Palette, Copy & Typography Through Design Review, Then Export a Web Brand Kit**
+
+[![Version](https://img.shields.io/badge/version-v0.1.2-D94E3B)](https://github.com/TidaltoLabs/tidalto-plugins/blob/main/packages/brand-kit-maker/VERSION)
+[![Hosts](https://img.shields.io/badge/hosts-Claude_Code_%7C_Codex-23887C)](#typical-usage)
+[![License: MIT](https://img.shields.io/badge/license-MIT-64748B)](LICENSE)
+
+[简体中文](README.md) · English
+
+</div>
+
+---
 
 Turn brand requirements and design discussions (logo, color palette, copy, and typography) into a finalized configuration and export an archive-ready web brand kit.
 
@@ -11,6 +27,7 @@ Turn brand requirements and design discussions (logo, color palette, copy, and t
 | [scripts](scripts/README.md) | Preview rendering and brand-kit export PowerShell scripts |
 | [examples](examples/README.md) | Reproducible Ravn Kolchis case study, source art, and finalized config |
 | [assets](assets/README.md) | Bundled Cormorant Garamond fonts and OFL license |
+| `logos/` | Plugin icons (`logo.svg` + 512/256/128 transparent PNGs) |
 
 ## Typical Usage
 

@@ -26,7 +26,7 @@
 | 插件 | 版本 | 简介 | 技能数 | Claude Code | Codex / Cursor / Copilot | Antigravity | ZCode | DSH | 文档 |
 |---|---:|---|---:|:---:|:---:|:---:|:---:|:---:|---|
 | **[eng-system](packages/eng-system/README.md)** | `0.3.4` | 工程文档体系技能组：接手导览、骨架引导、调研协议、决策记录、架构规格、里程碑规划与验收、一致性审查 | 7 | ✅ | ✅ | ✅ | ✅ | ✅ | [中文](packages/eng-system/README.md) · [EN](packages/eng-system/README_EN.md) |
-| **[brand-kit-maker](packages/brand-kit-maker/README.md)** | `0.1.1` | 品牌制作套件：从品牌需求与设计讨论出发，定稿 Logo、配色、文案与字体，并导出完整站点品牌套件 | 1 | ✅ | ✅ | — | — | — | [中文](packages/brand-kit-maker/README.md) · [EN](packages/brand-kit-maker/README_EN.md) |
+| **[brand-kit-maker](packages/brand-kit-maker/README.md)** | `0.1.2` | 品牌制作套件：从品牌需求与设计讨论出发，定稿 Logo、配色、文案与字体，并导出完整站点品牌套件 | 1 | ✅ | ✅ | — | — | — | [中文](packages/brand-kit-maker/README.md) · [EN](packages/brand-kit-maker/README_EN.md) |
 
 > **为什么 `brand-kit-maker` 目前仅开放给 Claude Code 与 Codex？**
 > 该插件的设计讨论阶段依赖宿主会话原生的图像生成与看图评审能力，目前优先承接给默认具备生图能力的 Claude Code 与 Codex；导出脚本基于 Windows PowerShell 7。后续视其他宿主的生图能力与跨平台导出脚本完善后再扩展。
@@ -121,7 +121,7 @@ tidalto-plugins/
 │   │   ├── templates/
 │   │   ├── logos/
 │   │   └── adapters/
-│   └── brand-kit-maker/               # v0.1.1：品牌套件技能 + 模板 + 脚本 + 字体 + 案例 + 2 宿主适配
+│   └── brand-kit-maker/               # v0.1.2：品牌套件技能 + 模板 + 脚本 + 字体 + 案例 + logos + 2 宿主适配
 │       ├── VERSION
 │       ├── README.md / README_EN.md
 │       ├── skills/

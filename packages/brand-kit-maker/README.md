@@ -1,4 +1,20 @@
-# 品牌制作套件
+<div align="center">
+
+<img src="logos/logo-256.png" alt="brand-kit-maker logo" width="112" height="112" />
+
+# 品牌制作套件（brand-kit-maker）
+
+**从品牌需求与设计讨论出发，定稿 Logo、配色、文案与字体，并导出完整站点品牌套件**
+
+[![Version](https://img.shields.io/badge/version-v0.1.2-D94E3B)](https://github.com/TidaltoLabs/tidalto-plugins/blob/main/packages/brand-kit-maker/VERSION)
+[![Hosts](https://img.shields.io/badge/hosts-Claude_Code_%7C_Codex-23887C)](#典型用法)
+[![License: MIT](https://img.shields.io/badge/license-MIT-64748B)](LICENSE)
+
+简体中文 · [English](README_EN.md)
+
+</div>
+
+---
 
 把品牌需求、Logo 设计、颜色、文案和字体讨论整理成一份定稿配置，再生成可归档和使用的站点素材。
 
@@ -9,6 +25,7 @@
 | [scripts](scripts/README.md) | 预览与品牌套件导出 |
 | [examples](examples/README.md) | Ravn Kolchis 的底稿、样张和可复现的定稿配置 |
 | [assets](assets/README.md) | 默认字体及其授权 |
+| `logos/` | 插件图标（`logo.svg` 与 512/256/128 透明底 PNG） |
 
 ## 典型用法
 

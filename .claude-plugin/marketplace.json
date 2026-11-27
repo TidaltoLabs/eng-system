@@ -32,8 +32,9 @@
     {
       "name": "brand-kit-maker",
       "source": "./plugins/brand-kit-maker/claude",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "displayName": "品牌制作套件",
+      "icon": "https://raw.githubusercontent.com/TidaltoLabs/tidalto-plugins/main/packages/brand-kit-maker/logos/logo.png",
       "description": "从品牌需求和设计讨论出发，定稿 Logo、配色、文案与字体，并导出站点品牌套件（需宿主具备生图能力，面向 Claude Code / Codex）。",
       "description_i18n": {
         "en": "Guide brand discovery, finalize logo, palette, copy, and typography, and export a complete web brand kit (requires image generation; built for Claude Code & Codex).",
